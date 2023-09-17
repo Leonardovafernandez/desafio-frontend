@@ -92,3 +92,48 @@ button:focus-visible {
   overflow-y: scroll;
   z-index: 20;
 }
+
+.toastWhite {
+  background-color: #fff;
+  color: #494949;
+
+  border-radius: 10px;
+}
+
+@keyframes showcard {
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes showmodal {
+  from {
+      opacity: 0;
+  }
+
+  to {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+.modal-card{
+  animation-name: showmodal;
+  animation-duration: .4s;
+  animation-fill-mode: forwards;
+  
+  transform: translateX(-2rem);
+}
+
+.card-note{
+  animation-name: showcard;
+  animation-duration: .6s;
+  animation-fill-mode: forwards;
+  
+  transform: translateY(-2rem);
+}

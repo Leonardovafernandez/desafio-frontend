@@ -1,5 +1,6 @@
 import close from '../../assets/close.svg';
 import useMain from '../../hooks/useMain';
+import { toastFailWhite } from '../../utils/toast.ts';
 import DisciplineButton from '../DisciplineButton';
 
 type Prop = {
@@ -13,14 +14,25 @@ export default function Modal({number}: Prop) {
         setDiscipline, 
     } = useMain()
 
+    const toast = {
+        msg:"Nota cadastrada",
+        classname: "toastWhite"
+    }
+
     function closeModal() {
         setDiscipline('')
         setShowModal(!showModal)
     }
 
+    function handleSubmit() {
+        
+        toastFailWhite(toast)
+        setShowModal(!showModal)
+    }
+
     return(
         <div className='modal'>
-            <div className='flex flex-col justify-between w-[42.375rem] h-[23.6875rem] bg-[#0F0F0F] px-[3rem] py-[2rem]'>
+            <div className='flex flex-col justify-between w-[42.375rem] h-[23.6875rem] bg-[#0F0F0F] px-[3rem] py-[2rem] modal-card'>
                 <div className='flex justify-between'>
                     <span className='font-main text-[2rem] font-medium'>Bimestre {number}</span>
                     <img className='cursor-pointer' src={close} alt="fechar" onClick={closeModal} />
@@ -41,7 +53,8 @@ export default function Modal({number}: Prop) {
                     />
                 </div>
                 <div className='flex justify-end'>
-                    <button className='w-[11.5rem] px-8 py-4 rounded-[0.75rem] font-main font-semibold text-[1rem] bg-button text-black'>Confirmar</button>
+                    <button className='w-[11.5rem] px-8 py-4 rounded-[0.75rem] font-main font-semibold text-[1rem] bg-button text-black'
+                    onClick={handleSubmit}>Confirmar</button>
                 </div>
             </div>
         </div>       

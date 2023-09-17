@@ -60,7 +60,7 @@ export default function Card({name, data, value}: Prop) {
     }
 
     return(
-        <div className="flex gap-[0.56rem]">
+        <div className="flex gap-[0.56rem] card-note">
             <div className={defineCardCLass({ name })}>
                 <div className='flex flex-col mt-[1rem] ml-[1rem]'>
                     <span className='font-main font-medium text-[1.125rem]'>{name}</span>
