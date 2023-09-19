@@ -16,10 +16,34 @@ type GradeData = {
     nota: number,
     criadoem: string,
     atualizadoem: string
-    }
+}
+
+type UseMainProviderProps = {
+    showModalOne: boolean;
+    setShowModalOne: (showModal: boolean) => void;
+    biologyOne: GradeData; 
+    artOne: GradeData;
+    geographyOne: GradeData;
+    sociologyOne: GradeData;
+    biologyTwo: GradeData;
+    artTwo: GradeData;
+    geographyTwo: GradeData;
+    sociologyTwo: GradeData;
+    biologyThree: GradeData;
+    artThree: GradeData;
+    geographyThree: GradeData;
+    sociologyThree: GradeData;
+    biologyFour: GradeData;
+    artFour: GradeData;
+    geographyFour: GradeData;
+    sociologyFour: GradeData;
+}
+
+
 
 export default function BimestreContentOne({bimestre}: BimestreProps){
-    const { showModalOne, 
+    const { 
+        showModalOne, 
         setShowModalOne,   
         biologyOne, 
         artOne,
@@ -37,7 +61,7 @@ export default function BimestreContentOne({bimestre}: BimestreProps){
         artFour,
         geographyFour,
         sociologyFour 
-    } = useMain();
+    } = useMain() as UseMainProviderProps;
     const number: number = 1;
     const [data, setData] = useState<GradeData[]>()
     const [showTooltip, setShowTooltip] = useState(false)

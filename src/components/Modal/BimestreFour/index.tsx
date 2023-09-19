@@ -1,15 +1,21 @@
 import { useState } from 'react';
 import close from '../../../assets/close.svg';
 import useMain from '../../../hooks/useMain';
-import { toastFailWhite } from '../../../utils/toast.ts';
+// import { toastFailWhite } from '../../../utils/toast.ts';
 import DisciplineButton from '../../DisciplineButton';
 import api from '../../../services/api';
-
 
 type FormProps = {
     disciplina_id: number | undefined; 
     bimestre_id: number;
     nota: number;
+}
+
+type UseMainProviderProps = {
+    discipline: 'Biologia' | 'Artes' | 'Geografia' | 'Sociologia',
+    setDiscipline: (showModal: string) => void, 
+    showModalFour: boolean;
+    setShowModalFour: (showModal: boolean) => void;
 }
 
 export default function ModalFour() {
@@ -20,17 +26,17 @@ export default function ModalFour() {
         setShowModalFour,
         setDiscipline,
         discipline 
-    } = useMain()
+    } = useMain() as UseMainProviderProps;
 
-    const toast = {
-        msg:"Nota cadastrada",
-        classname: "toastWhite"
-    }
+    // const toast = {
+    //     msg:"Nota cadastrada",
+    //     classname: "toastWhite"
+    // }
 
-    const toastError = {
-        msg:"A nota Precisa ser um valor válido!",
-        classname: "toastWhite"
-    }
+    // const toastError = {
+    //     msg:"A nota Precisa ser um valor válido!",
+    //     classname: "toastWhite"
+    // }
 
     function closeModal() {
         setDiscipline('')
@@ -53,15 +59,17 @@ export default function ModalFour() {
         }
         
         if (value < 0 || value > 10) {
-            return toastFailWhite(toastError)
+            return alert("A nota Precisa ser um valor válido!")
+            // toastFailWhite(toastError)
         }
 
         try {            
-            const response = await api.post('/grade', formSubmit);
-            toastFailWhite(toast)
+            await api.post('/grade', formSubmit);
+            alert("Nota cadastrada")
+            // toastFailWhite(toast)
             closeModal()
-          } catch (error: any) {
-            console.error((error as Error).message); 
+          } catch (error) {
+            console.error((error as Error).message);
             closeModal()
           }
     }
@@ -85,7 +93,7 @@ export default function ModalFour() {
                 </div>
                 <div className='flex flex-col gap-4'>
                     <span className='font-main font-medium text-[1.125rem]'>Disciplina</span>
-                    <div className='flex large:justify-between small:justify-center small:gap-[1.13rem] small:flex-wrap small:mb-4'>
+                    <div className='flex large:justify-between small:justify-center gap-[1.13rem] small:flex-wrap small:mb-4'>
                         <DisciplineButton >Biologia</DisciplineButton>
                         <DisciplineButton >Artes</DisciplineButton>
                         <DisciplineButton >Geografia</DisciplineButton>
