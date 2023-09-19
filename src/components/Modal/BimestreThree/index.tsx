@@ -2,8 +2,8 @@ import { useState } from 'react';
 import close from '../../../assets/close.svg';
 import useMain from '../../../hooks/useMain';
 // import { toastFailWhite } from '../../../utils/toast.ts';
-import DisciplineButton from '../../DisciplineButton';
 import api from '../../../services/api';
+import DisciplineButton from '../../DisciplineButton';
 
 type FormProps = {
     disciplina_id: number | undefined; 

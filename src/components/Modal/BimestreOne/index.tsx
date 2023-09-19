@@ -28,15 +28,15 @@ export default function ModalOne() {
         discipline 
     } = useMain() as UseMainProviderProps;
 
-    const toast = {
-        msg:"Nota cadastrada",
-        classname: "toastWhite"
-    }
+    // const toast = {
+    //     msg:"Nota cadastrada",
+    //     classname: "toastWhite"
+    // }
 
-    const toastError = {
-        msg:"A nota Precisa ser um valor válido!",
-        classname: "toastWhite"
-    }
+    // const toastError = {
+    //     msg:"A nota Precisa ser um valor válido!",
+    //     classname: "toastWhite"
+    // }
 
     function closeModal() {
         setDiscipline('')

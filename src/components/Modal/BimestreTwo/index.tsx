@@ -2,7 +2,7 @@ import { useState } from 'react';
 import close from '../../../assets/close.svg';
 import useMain from '../../../hooks/useMain';
 import api from '../../../services/api';
-import { toastFailWhite } from '../../../utils/toast.ts';
+// import { toastFailWhite } from '../../../utils/toast.ts';
 import DisciplineButton from '../../DisciplineButton';
 
 type FormProps = {

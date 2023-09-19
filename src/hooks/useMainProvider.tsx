@@ -11,6 +11,7 @@ export type ProviderProps = {
   discipline: string;
   setDiscipline: (showModal: string) => void;
   data: GradeData[];
+  setData: (data: GradeData[]) => void,
   biologyOne: GradeData | undefined; 
   artOne: GradeData | undefined;
   geographyOne: GradeData | undefined;
@@ -27,6 +28,7 @@ export type ProviderProps = {
   artFour: GradeData | undefined;
   geographyFour: GradeData | undefined;
   sociologyFour: GradeData | undefined;
+  defineData: (data: GradeData[]) => void, 
 }
 
 export type GradeData = {

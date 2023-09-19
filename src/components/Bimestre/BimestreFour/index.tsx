@@ -15,7 +15,8 @@ type GradeData = {
     disciplina: "Biologia" | "Artes" | "Geografia" | "Sociologia",
     nota: number,
     criadoem: string,
-    atualizadoem: string
+    atualizadoem: string,
+    key: number
 }
 
 type UseMainProviderProps = {
@@ -65,21 +66,23 @@ export default function BimestreContentFour({bimestre}: BimestreProps){
 
     function defineData(bimestre: number) {
         if (bimestre === 1) {
-            setData([biologyOne, artOne, geographyOne, sociologyOne])
+            setData([{ ...biologyOne, key: 1}, { ...artOne, key: 2}, { ...geographyOne, key: 3}, { ...sociologyOne, key: 4}])
         }
 
         if (bimestre === 2) {
-            setData([biologyTwo, artTwo, geographyTwo, sociologyTwo])
+            setData([{ ...biologyTwo, key: 1}, { ...artTwo, key: 2}, { ...geographyTwo, key: 3}, { ...sociologyTwo, key: 4}])
         }
 
         if (bimestre === 3) {
-            setData([biologyThree, artThree, geographyThree, sociologyThree])
+            setData([{ ...biologyThree, key: 1}, { ...artThree, key: 2}, { ...geographyThree, key: 3}, { ...sociologyThree, key: 4}])
         }
 
         if (bimestre === 4) {
-            setData([biologyFour, artFour, geographyFour, sociologyFour])
-        }
+            setData([{ ...biologyFour, key: 1}, { ...artFour, key: 2}, { ...geographyFour, key: 3}, { ...sociologyFour, key: 4}])
+        }          
     }
+    console.log(data);
+    
 
     function formatarData(dataString: string): string {
         const data = new Date(dataString);
@@ -117,7 +120,7 @@ export default function BimestreContentFour({bimestre}: BimestreProps){
                 </div>    
             <div className="flex large:gap-[2.31rem] small:gap-[0.31rem] justify-center mt-8 mb-6 small:flex-wrap">
                 {data?.map(grade=>(
-                    <Card key={grade?.id} name={grade?.disciplina} data={grade?.atualizadoem ? formatarData(grade?.atualizadoem) : formatarData(grade?.criadoem)} value={grade?.nota} id={grade?.id}/>
+                    <Card key={grade?.key} name={grade?.disciplina} data={grade?.atualizadoem ? formatarData(grade?.atualizadoem) : formatarData(grade?.criadoem)} value={grade?.nota} id={grade?.id}/>
                 ))}
             </div>
             {showModalFour && <ModalFour />}
