@@ -98,7 +98,7 @@ export default function BimestreContentThree({bimestre}: BimestreProps){
 
     useEffect(() => {
         defineData(bimestre)
-    }, [biologyThree]);
+    }, [data]);
 
     
     return(

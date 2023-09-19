@@ -98,7 +98,7 @@ export default function BimestreContentTwo({bimestre}: BimestreProps){
 
     useEffect(() => {
         defineData(bimestre)
-    }, [biologyTwo]);
+    }, [data]);
 
     
     return(
