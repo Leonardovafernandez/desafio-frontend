@@ -119,7 +119,9 @@ export default function BimestreContentThree({bimestre}: BimestreProps){
             </div> 
             <div className="flex large:gap-[2.31rem] small:gap-[0.31rem] justify-center mt-8 mb-6 small:flex-wrap">
                 {data?.map(grade=>(
+                    grade?.id ? 
                     <Card key={grade?.key} name={grade?.disciplina} data={grade?.atualizadoem ? formatarData(grade?.atualizadoem) : formatarData(grade?.criadoem)} value={grade?.nota} id={grade?.id}/>
+                    : <div className='w-[197.967px] h-[146px]'></div> 
                 ))}
             </div>
             {showModalThree && <ModalThree />}
