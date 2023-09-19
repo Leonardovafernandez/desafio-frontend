@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import api from '../services/api';
 import { ProviderProps, GradeData } from './useMainProvider';
 
+
+
 export default function useMainProvider(): ProviderProps {
   const [showModalOne, setShowModalOne] = useState(false);
   const [showModalTwo, setShowModalTwo] = useState(false);
@@ -34,13 +36,13 @@ export default function useMainProvider(): ProviderProps {
     try {
       const response = await api.get<GradeData[]>('/grades');
       setData(response.data);
-      defineData({ data: response.data });
+      defineData(response.data);
     } catch (error) {
       console.error((error as Error).message);
     }
   }
 
-  function defineData({ data }: { data: GradeData[]; }) {
+  function defineData(data: GradeData[]) {
 
     data.forEach(data => {
       if (data.bimestre === "PRIMEIRO") {

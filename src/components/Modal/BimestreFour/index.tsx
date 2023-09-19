@@ -1,15 +1,21 @@
 import { useState } from 'react';
 import close from '../../../assets/close.svg';
 import useMain from '../../../hooks/useMain';
-import { toastFailWhite } from '../../../utils/toast.ts';
+// import { toastFailWhite } from '../../../utils/toast.ts';
 import DisciplineButton from '../../DisciplineButton';
 import api from '../../../services/api';
-
 
 type FormProps = {
     disciplina_id: number | undefined; 
     bimestre_id: number;
     nota: number;
+}
+
+type UseMainProviderProps = {
+    discipline: 'Biologia' | 'Artes' | 'Geografia' | 'Sociologia',
+    setDiscipline: (showModal: string) => void, 
+    showModalFour: boolean;
+    setShowModalFour: (showModal: boolean) => void;
 }
 
 export default function ModalFour() {
@@ -20,17 +26,17 @@ export default function ModalFour() {
         setShowModalFour,
         setDiscipline,
         discipline 
-    } = useMain()
+    } = useMain() as UseMainProviderProps;
 
-    const toast = {
-        msg:"Nota cadastrada",
-        classname: "toastWhite"
-    }
+    // const toast = {
+    //     msg:"Nota cadastrada",
+    //     classname: "toastWhite"
+    // }
 
-    const toastError = {
-        msg:"A nota Precisa ser um valor válido!",
-        classname: "toastWhite"
-    }
+    // const toastError = {
+    //     msg:"A nota Precisa ser um valor válido!",
+    //     classname: "toastWhite"
+    // }
 
     function closeModal() {
         setDiscipline('')
@@ -53,12 +59,14 @@ export default function ModalFour() {
         }
         
         if (value < 0 || value > 10) {
-            return toastFailWhite(toastError)
+            return alert("A nota Precisa ser um valor válido!")
+            // toastFailWhite(toastError)
         }
 
         try {            
-            const response = await api.post('/grade', formSubmit);
-            toastFailWhite(toast)
+            await api.post('/grade', formSubmit);
+            alert("Nota cadastrada")
+            // toastFailWhite(toast)
             closeModal()
           } catch (error) {
             console.error((error as Error).message);

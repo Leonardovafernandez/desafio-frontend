@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import close from '../../../assets/close.svg';
 import useMain from '../../../hooks/useMain';
-import { toastFailWhite } from '../../../utils/toast.ts';
+// import { toastFailWhite } from '../../../utils/toast.ts';
 import DisciplineButton from '../../DisciplineButton';
 import api from '../../../services/api';
-
 
 type FormProps = {
     disciplina_id: number | undefined; 
@@ -12,15 +11,22 @@ type FormProps = {
     nota: number;
 }
 
+type UseMainProviderProps = {
+    discipline: 'Biologia' | 'Artes' | 'Geografia' | 'Sociologia',
+    setDiscipline: (showModal: string) => void, 
+    showModalOne: boolean;
+    setShowModalOne: (showModal: boolean) => void;
+}
+
 export default function ModalOne() {
     const [value, setValue] = useState(0)
-    const numberOne: number = 1;
+    const number: number = 1;
     const { 
         showModalOne, 
         setShowModalOne,
         setDiscipline,
         discipline 
-    } = useMain()
+    } = useMain() as UseMainProviderProps;
 
     const toast = {
         msg:"Nota cadastrada",
@@ -53,12 +59,14 @@ export default function ModalOne() {
         }
         
         if (value < 0 || value > 10) {
-            return toastFailWhite(toastError)
+            return alert("A nota Precisa ser um valor válido!")
+            // toastFailWhite(toastError)
         }
 
         try {            
-            const response = await api.post('/grade', formSubmit);
-            toastFailWhite(toast)
+            await api.post('/grade', formSubmit);
+            alert("Nota cadastrada")
+            // toastFailWhite(toast)
             closeModal()
           } catch (error) {
             console.error((error as Error).message);
@@ -80,7 +88,7 @@ export default function ModalOne() {
         <div className='modal'>
             <div className='flex flex-col justify-between w-fit h-fit bg-[#0F0F0F] px-[3rem] py-[2rem] modal-card'>
                 <div className='flex justify-between small:mb-8'>
-                    <span className='font-main text-[2rem] font-medium'>Bimestre {numberOne}</span>
+                    <span className='font-main text-[2rem] font-medium'>Bimestre {number}</span>
                     <img className='cursor-pointer' src={close} alt="fechar" onClick={closeModal} />
                 </div>
                 <div className='flex flex-col gap-4'>

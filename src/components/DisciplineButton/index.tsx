@@ -9,11 +9,16 @@ type FunctionCardProp = {
     discipline: 'Biologia' | 'Artes' | 'Geografia' | 'Sociologia'
 }
 
+type UseMainProviderProps = {
+    discipline: 'Biologia' | 'Artes' | 'Geografia' | 'Sociologia',
+    setDiscipline: (showModal: string) => void, 
+}
+
 export default function DisciplineButton({ children }: Props) {
     const { 
         discipline,
         setDiscipline, 
-    } = useMain()
+      } = useMain() as UseMainProviderProps;
     
     let name: 'Biologia' | 'Artes' | 'Geografia' | 'Sociologia' = 'Biologia';
 
@@ -40,10 +45,9 @@ export default function DisciplineButton({ children }: Props) {
         }
     }
     
-    function selectButton (name: string): (name: string) => void {
-        console.log(name);
-        return setDiscipline(name)
-    }
+    function selectButton(name: string): void {
+        setDiscipline(name);
+      }
 
     return (
         <button className={defineCardClass({ name, discipline })}
