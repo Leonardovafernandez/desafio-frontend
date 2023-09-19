@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { createContext } from 'react'
-import useMainProvider from "../hooks/useMainProvider";
+import useMainProvider from '../hooks/useMainProvider.2';
 
 interface AppProviderProps {
   children: ReactNode;

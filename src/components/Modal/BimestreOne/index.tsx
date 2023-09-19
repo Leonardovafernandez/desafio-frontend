@@ -60,8 +60,8 @@ export default function ModalOne() {
             const response = await api.post('/grade', formSubmit);
             toastFailWhite(toast)
             closeModal()
-          } catch (error: any) {
-            console.error((error as Error).message); 
+          } catch (error) {
+            console.error((error as Error).message);
             closeModal()
           }
     }
@@ -85,7 +85,7 @@ export default function ModalOne() {
                 </div>
                 <div className='flex flex-col gap-4'>
                     <span className='font-main font-medium text-[1.125rem]'>Disciplina</span>
-                    <div className='flex large:justify-between small:justify-center small:gap-[1.13rem] small:flex-wrap small:mb-4'>
+                    <div className='flex large:justify-between small:justify-center gap-[1.13rem] small:flex-wrap small:mb-4'>
                         <DisciplineButton >Biologia</DisciplineButton>
                         <DisciplineButton >Artes</DisciplineButton>
                         <DisciplineButton >Geografia</DisciplineButton>

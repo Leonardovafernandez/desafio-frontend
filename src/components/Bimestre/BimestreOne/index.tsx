@@ -16,10 +16,12 @@ type GradeData = {
     nota: number,
     criadoem: string,
     atualizadoem: string
-    }
+}
+
 
 export default function BimestreContentOne({bimestre}: BimestreProps){
-    const { showModalOne, 
+    const { 
+        showModalOne, 
         setShowModalOne,   
         biologyOne, 
         artOne,

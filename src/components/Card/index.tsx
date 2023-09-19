@@ -66,8 +66,8 @@ export default function Card({name, data, value, id}: Prop) {
     async function deleteGrade(id:number) {
         try {
           await api.delete(`/grade/${id}`);
-        } catch (error: any) {
-          console.error((error as Error).message); 
+        } catch (error) {
+            console.error((error as Error).message);
         }
       }
 
