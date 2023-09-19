@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import close from '../../../assets/close.svg';
 import useMain from '../../../hooks/useMain';
-// import { toastFailWhite } from '../../../utils/toast.ts';
+import { toastFailWhite, toastSuccess } from '../../../utils/toast.ts';
 import DisciplineButton from '../../DisciplineButton';
 import api from '../../../services/api';
 
@@ -28,15 +28,20 @@ export default function ModalOne() {
         discipline 
     } = useMain() as UseMainProviderProps;
 
-    // const toast = {
-    //     msg:"Nota cadastrada",
-    //     classname: "toastWhite"
-    // }
+    const toast = {
+        msg:'Avaliação cadastrada com sucesso!',
+        classname: "toastWhite"
+    }
 
-    // const toastError = {
-    //     msg:"A nota Precisa ser um valor válido!",
-    //     classname: "toastWhite"
-    // }
+    const toastError = {
+        msg:"A nota precisa ter um entre 0 e 10!",
+        classname: "toastWhite"
+    }
+
+    const toastErrorDiscipline = {
+        msg:"Você precisa preencher os todos os campos!",
+        classname: "toastWhite"
+    }
 
     function closeModal() {
         setDiscipline('')
@@ -59,18 +64,16 @@ export default function ModalOne() {
         }
         
         if (value < 0 || value > 10) {
-            return alert("A nota Precisa ser um valor válido!")
-            // toastFailWhite(toastError)
+            return toastFailWhite(toastError)
         }
 
         try {            
             await api.post('/grade', formSubmit);
-            alert("Nota cadastrada")
-            // toastFailWhite(toast)
+            toastSuccess(toast)
             closeModal()
           } catch (error) {
             console.error((error as Error).message);
-            closeModal()
+            return toastFailWhite(toastErrorDiscipline)
           }
     }
 

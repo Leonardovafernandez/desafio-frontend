@@ -1,9 +1,10 @@
 import { ReactNode, useState } from 'react';
-import trash from '../../assets/Trash.svg'
-import chartGreen from '../../assets/ChartGreen.svg'
-import chartRed from '../../assets/ChartRed.svg'
-import chartYellow from '../../assets/ChartYellow.svg'
+import chartGreen from '../../assets/ChartGreen.svg';
+import chartRed from '../../assets/ChartRed.svg';
+import chartYellow from '../../assets/ChartYellow.svg';
+import trash from '../../assets/Trash.svg';
 import api from '../../services/api';
+import { toastSuccess } from '../../utils/toast';
 import Tooltip from '../Tooltip';
 
 type Prop = {
@@ -63,10 +64,15 @@ export default function Card({name, data, value, id}: Prop) {
         }
     }
 
+    const toastMessage = {
+        msg: 'Avaliação excluida com sucesso!',
+        classname: "toastWhite"
+    }
+
     async function deleteGrade(id:number) {
         try {
           await api.delete(`/grade/${id}`);
-          alert("Nota removida!")
+          toastSuccess(toastMessage)
           window.location.reload()
         } catch (error) {
             console.error((error as Error).message);

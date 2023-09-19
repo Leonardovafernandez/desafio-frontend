@@ -81,7 +81,6 @@ export default function BimestreContentFour({bimestre}: BimestreProps){
             setData([{ ...biologyFour, key: 1}, { ...artFour, key: 2}, { ...geographyFour, key: 3}, { ...sociologyFour, key: 4}])
         }          
     }
-    console.log(data);
     
 
     function formatarData(dataString: string): string {
