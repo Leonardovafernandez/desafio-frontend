@@ -6,9 +6,11 @@ type Prop = {
 
 export default function Header({number}: Prop) {
     return(
-        <div className="flex justify-between items-center h-[2.5rem] w-full">
+        <div className="flex justify-between items-center h-[2.5rem] small:w-[400.894px] large:w-[902.748px]">
             <span className="text-white font-main text-[1.125rem]">Bimestre {number}</span>
-            <Button/>
+            <div className="flex small:justify-self-end">
+                <Button/>
+            </div>
         </div>       
     )
 }

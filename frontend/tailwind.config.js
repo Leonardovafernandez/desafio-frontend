@@ -4,10 +4,8 @@ export default {
   theme: {
     extend: {
       screens: {
-        1536: { max: '1536px', min: '1367px' },
-        1440: { max: '1440px', min: '1367px' },
-        1366: { min: '1366px', max: '1439px' },
-        md: '850px',
+        small: { max: '600px', min: '50px' },
+        large: { max: '5000px', min: '601px' },
       },
       colors: {
         biologyPrimary: '#CC4090',

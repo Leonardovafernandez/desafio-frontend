@@ -1,45 +1,24 @@
-import Card from "./components/Card";
-import Header from "./components/Header";
-import Modal from "./components/Modal";
-import useMain from "./hooks/useMain";
+import BimestreContent from "./components/Bimestre";
+import BimestreContentFour from "./components/Bimestre/BimestreFour";
+import BimestreContentOne from "./components/Bimestre/BimestreOne";
+import BimestreContentThree from "./components/Bimestre/BimestreThree";
+import BimestreContentTwo from "./components/Bimestre/BimestreTwo";
 
 export default function App() {
-  const { showModal, setShowModal } = useMain();
+  const bimesters:number[] = [1,2,3,4];
 
 
   return (
     <div className="bg-[#0F0F0F] h-screen w-screen flex justify-center overflow-scroll">
         <div className="w-fit mt-[3.38rem]">
-          <Header number={1} />
-          <div className="flex gap-[2.31rem] justify-center mt-8 mb-6">
-            <Card name='Biologia' data='29/10/2023' value={5}/>
-            <Card name='Artes' data='29/10/2023' value={7}/>
-            <Card name='Geografia' data='29/10/2023' value={8}/>
-            <Card name='Sociologia' data='29/10/2023' value={5}/>
-          </div>
-          <Header number={2}/>
-          <div className="flex gap-[2.31rem] justify-center mt-8 mb-6">
-            <Card name='Biologia' data='29/10/2023' value={5}/>
-            <Card name='Artes' data='29/10/2023' value={7}/>
-            <Card name='Geografia' data='29/10/2023' value={8}/>
-            <Card name='Sociologia' data='29/10/2023' value={5}/>
-          </div>
-          <Header number={3}/>
-          <div className="flex gap-[2.31rem] justify-center mt-8 mb-6">
-            <Card name='Biologia' data='29/10/2023' value={5}/>
-            <Card name='Artes' data='29/10/2023' value={7}/>
-            <Card name='Geografia' data='29/10/2023' value={8}/>
-            <Card name='Sociologia' data='29/10/2023' value={5}/>
-          </div>
-          <Header number={4}/>
-          <div className="flex gap-[2.31rem] justify-center mt-8 mb-6">
-            <Card name='Biologia' data='29/10/2023' value={5}/>
-            <Card name='Artes' data='29/10/2023' value={7}/>
-            <Card name='Geografia' data='29/10/2023' value={8}/>
-            <Card name='Sociologia' data='29/10/2023' value={5}/>
-          </div>
+          {/* {bimesters.map(id =>(
+            <BimestreContent key={id} bimestre={id} />
+          ))} */}
+          <BimestreContentOne bimestre={1}/>
+          <BimestreContentTwo bimestre={2}/>
+          <BimestreContentThree bimestre={3}/>
+          <BimestreContentFour bimestre={4}/>
         </div>
-      {showModal && <Modal number={1} />}
     </div>
   )
 }

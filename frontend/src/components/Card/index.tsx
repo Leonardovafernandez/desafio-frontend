@@ -1,13 +1,16 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import trash from '../../assets/Trash.svg'
 import chartGreen from '../../assets/ChartGreen.svg'
 import chartRed from '../../assets/ChartRed.svg'
 import chartYellow from '../../assets/ChartYellow.svg'
+import api from '../../services/api';
+import Tooltip from '../Tooltip';
 
 type Prop = {
     name: 'Biologia' | 'Artes' | 'Geografia' | 'Sociologia',
     data: string,
-    value: number
+    value: number,
+    id: number
 }
 
 type FunctionCardProp = {
@@ -18,7 +21,8 @@ type FunctionValueProp = {
     value: number,
 }
 
-export default function Card({name, data, value}: Prop) {
+export default function Card({name, data, value, id}: Prop) {
+    const [showTooltip, setShowTooltip] = useState(false)
     
     function defineCardCLass({name}:FunctionCardProp): string | undefined {
         const classMap = {
@@ -28,7 +32,7 @@ export default function Card({name, data, value}: Prop) {
             Sociologia: 'bg-sociologyPrimary',
           };
         
-          const defaultClass = 'h-[9.125rem] w-[9.8125rem] flex flex-col justify-between rounded-[1.25rem]';
+          const defaultClass = 'z-1 h-[9.125rem] w-[9.8125rem] flex flex-col justify-between rounded-[1.25rem]';
           return classMap[name] ? `${defaultClass} ${classMap[name]}` : defaultClass;
     }
 
@@ -59,6 +63,14 @@ export default function Card({name, data, value}: Prop) {
         }
     }
 
+    async function deleteGrade(id:number) {
+        try {
+          await api.delete(`/grade/${id}`);
+        } catch (error: any) {
+          console.error((error as Error).message); 
+        }
+      }
+
     return(
         <div className="flex gap-[0.56rem] card-note">
             <div className={defineCardCLass({ name })}>
@@ -70,9 +82,16 @@ export default function Card({name, data, value}: Prop) {
                     {defineValueCLass({ value })}
                 </div>
             </div>
-            <div className='w-fit h-fit cursor-pointer hover:scale-[1.1]'>
-                <img src={trash} alt="Deletar"/>
-            </div>            
+            <div className='w-fit h-fit relative'>
+                <div className=' w-fit h-fit cursor-pointer hover:scale-[1.1]'
+                    onClick={() => deleteGrade(id)}
+                    onMouseEnter={() => setShowTooltip(true)}
+                    onMouseLeave={() => setShowTooltip(false)}
+                >
+                    <img src={trash} alt="Deletar"/>
+                </div>            
+                {showTooltip && <Tooltip text="Remover"/>}
+            </div>
         </div>       
     )
 }

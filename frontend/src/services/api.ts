@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: 'https://clube-do-bug.onrender.com',
+    baseURL: 'https://api-desafio-grades.onrender.com',
     headers: {
         'Content-Type': 'application/json',
         "Access-Control-Allow-Origin": "*",

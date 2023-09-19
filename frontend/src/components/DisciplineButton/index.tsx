@@ -40,7 +40,7 @@ export default function DisciplineButton({ children }: Props) {
         }
     }
     
-    function selectButton (name): (name: string) => void {
+    function selectButton (name: string): (name: string) => void {
         console.log(name);
         return setDiscipline(name)
     }
