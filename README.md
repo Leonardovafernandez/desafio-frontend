@@ -8,10 +8,6 @@ Este documento descreve o frontend do projeto "Desafio" e fornece informações 
 
 - Nome da Branch: `desafio-leonardo-fernandez`
 
-## Figma
-
-- [Link para o Figma](https://www.figma.com/file/JzfPFVyczStkdzC3zmoa9I/Desafio?type=design&node-id=4-507&t=o5tNlYwj4k9y06Ue-0)
-
 ## Regras
 
 - Criar:
