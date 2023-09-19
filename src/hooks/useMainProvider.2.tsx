@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
-import api from '../services/api';
-import { ProviderProps, GradeData } from './useMainProvider';
+import { useState } from 'react';
+import { GradeData, ProviderProps } from './useMainProvider';
 
 
 
@@ -32,15 +31,15 @@ export default function useMainProvider(): ProviderProps {
   const [geographyFour, setGeographyFour] = useState<GradeData>();
   const [sociologyFour, setSociologyFour] = useState<GradeData>();
 
-  async function getGrades() {
-    try {
-      const response = await api.get<GradeData[]>('/grades');
-      setData(response.data);
-      defineData(response.data);
-    } catch (error) {
-      console.error((error as Error).message);
-    }
-  }
+  // async function getGrades() {
+  //   try {
+  //     const response = await api.get<GradeData[]>('/grades');
+  //     setData(response.data);
+  //     defineData(response.data);
+  //   } catch (error) {
+  //     console.error((error as Error).message);
+  //   }
+  // }
 
   function defineData(data: GradeData[]) {
 
@@ -107,9 +106,9 @@ export default function useMainProvider(): ProviderProps {
     });
   }
 
-  useEffect(() => {
-    getGrades();
-  }, [discipline]);
+  // useEffect(() => {
+  //   getGrades();
+  // }, [discipline]);
 
   return {
     showModalOne,
@@ -123,6 +122,7 @@ export default function useMainProvider(): ProviderProps {
     discipline,
     setDiscipline,
     data,
+    setData,
     biologyOne,
     artOne,
     geographyOne,
@@ -138,6 +138,7 @@ export default function useMainProvider(): ProviderProps {
     biologyFour,
     artFour,
     geographyFour,
-    sociologyFour
+    sociologyFour,
+    defineData
   };
 }

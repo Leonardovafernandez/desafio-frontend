@@ -66,12 +66,17 @@ export default function Card({name, data, value, id}: Prop) {
     async function deleteGrade(id:number) {
         try {
           await api.delete(`/grade/${id}`);
+          alert("Nota removida!")
+          window.location.reload()
         } catch (error) {
             console.error((error as Error).message);
         }
       }
 
     return(
+        <>
+        {!id && <div className='w-[197.967px] h-[146px]'></div>}
+        {id && 
         <div className="flex gap-[0.56rem] card-note">
             <div className={defineCardCLass({ name })}>
                 <div className='flex flex-col mt-[1rem] ml-[1rem]'>
@@ -87,11 +92,12 @@ export default function Card({name, data, value, id}: Prop) {
                     onClick={() => deleteGrade(id)}
                     onMouseEnter={() => setShowTooltip(true)}
                     onMouseLeave={() => setShowTooltip(false)}
-                >
+                    >
                     <img src={trash} alt="Deletar"/>
                 </div>            
                 {showTooltip && <Tooltip text="Remover"/>}
             </div>
-        </div>       
+        </div>    }   
+        </>
     )
 }
