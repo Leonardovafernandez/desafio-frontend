@@ -1,32 +1,47 @@
-# Desafio Frontend
+# Documentação do Frontend - Desafio Leonardo Fernandez
 
-Este é o repositório do frontend para o projeto Desafio. O frontend é responsável por fornecer uma interface para o gerenciamento de notas dos alunos.
+## Visão Geral
 
-## Configuração do Ambiente
+Este documento descreve o frontend do projeto "Desafio" e fornece informações sobre as funcionalidades da interface do usuário, as regras de negócio, e outras informações relevantes para o desenvolvimento e uso do sistema.
 
-Certifique-se de configurar o ambiente de desenvolvimento antes de executar o frontend.
+## Branch Atual
 
-## Telas
+- Nome da Branch: `desafio-leonardo-fernandez`
 
-O frontend oferece as seguintes funcionalidades:
+## Regras
 
-    Tela principal: Exibe a lista de notas dos alunos.
-    Tela de adição: Permite adicionar uma nova nota.
-    Tela de remoção: Permite remover uma nota existente.
+- Criar:
+  - Nota: Deve estar no intervalo de >=0 e <=10.
+  - Sempre informar uma disciplina.
+  - Utilizar botões/ícones com tooltips:
+    - Lixeira: "Remover"
+    - +: "Adicionar"
+  - Data: Referente à data de criação "criadoEm".
+  - Atenção nas cores, cada card possui a sua relativa à disciplina.
+  - Tela pública, não necessita de autenticação.
 
-## Botões/Ícones
+## Funcionalidades da Interface do Usuário
 
-    Lixeira: "Remover" - Usado para remover uma nota.
-    +: "Adicionar" - Usado para adicionar uma nova nota.
+- O frontend oferece as seguintes funcionalidades:
 
-Regras de Notas
+### Criação
 
-    A nota deve estar no intervalo de 0 a 10.
-    Sempre informe uma disciplina ao adicionar uma nota.
-    As cores dos cards são relativas à disciplina.
+- Permite criar um novo item.
+- Requer a entrada da nota (no intervalo de 0 a 10) e uma disciplina.
+- Botão "Adicionar" para confirmar a criação.
 
-Configuração e Execução
+### Remoção
 
-    Clone este repositório.
-    Execute npm install para instalar as dependências.
-    Execute npm start para iniciar o aplicativo.
+- Permite remover um item.
+- Utiliza o ícone de lixeira com o tooltip "Remover" para ação.
+- Confirmar a remoção com um diálogo de confirmação.
+
+### Cores
+
+- Os cards exibidos na interface têm cores relacionadas à disciplina.
+
+## Figma (Apoio / Entendimento das funcionalidades)
+
+- [Link para o Figma](https://www.figma.com/file/JzfPFVyczStkdzC3zmoa9I/Desafio?type=design&node-id=4-507&t=o5tNlYwj4k9y06Ue-0)
+
+Este documento fornece uma visão geral das funcionalidades e das regras de negócio do frontend do projeto. Certifique-se de atualizá-lo conforme o projeto evolui e novas funcionalidades são adicionadas. É fundamental que toda a equipe tenha acesso a essa documentação para garantir a compreensão e o desenvolvimento eficaz do projeto.
